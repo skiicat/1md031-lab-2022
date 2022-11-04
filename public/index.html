@@ -1,10 +1,109 @@
-<!DOCTYPE HTML>
-<html lang="en">
-   <head>
-       <title>Burgers to Order</title>
-       <meta charset="utf-8"/>
-   </head>
-   <body>
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <header>
+        <h1>Welcome to Viligante Burgers</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Select burger</h2>
+                Please pick your meal from our selection of burgers!
+                <!--Burgers here-->
+                <br>
+                <div style="display: inline-block">
+                    <h3>The Anti-Hero Burger</h3>
+                    <img src="https://www.blacktulipbeauty.co.uk/wp-content/uploads/2019/04/IMG_0079.jpg" alt="Anti-Hero Burger" title="Anti-Hero Burger" style="height: 300px">
+                    <ul>
+                        <li>CHO: 56 g</li>
+                        <li>Contains gluten</li>
+                        <li>Contains lactose</li>
+                    </ul>
+                </div> 
+                
+                <div style="display: inline-block">
+                    <h3>The Karma Burger</h3>
+                    <img src="https://bauergarden.se/wp-content/uploads/2020/04/burgare-liten-e1585728062961.jpg" alt="Karma Burger" title="Karma Burger" style="height: 300px">
+                    <ul>
+                        <li>CHO: 45 g</li>
+                        <li>Contains gluten</li>
+                        <li>Contains lactose</li>
+                    </ul>
+                </div>
+                <div style="display: inline-block">
+                    <h3>The Midnight Burger</h3>
+                    <img src="https://cdn.shopify.com/s/files/1/0563/7373/9669/articles/black-burger-bun-featured.jpg?v=1628758353" alt="Midnight Burger" title="Midnight Burger" style="height: 300px">
+                    <ul>
+                        <li>CHO: 28 g</li>
+                        <li>Free of gluten</li>
+                        <li>Vegan</li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h2>Customer information</h2>
+                Please enter essential information here for the delivery
+                <h3>Delivery information</h3>
+                <p> <!--name-->
+                    <label for="name">Full name</label><br>
+                    <input type="text" id="name" name="fn" required="required" placeholder="First and last name">
+                </p>
 
-   </body>
+                <p><!--e-mail-->
+                    <label for="mail">E-mail</label><br>
+                    <input type="email" id="mail" name="fn" required="required" placeholder="E-mail address">
+                </p>
+
+                <p><!--street-->
+                    <label for="street">Street</label><br>
+                    <input type="text" id="street" name="fn" required="required" placeholder="Street name">
+                </p>
+
+                <p><!--house number-->
+                    <label for="house">House</label><br>
+                    <input type="number" id="house" name="fn" required="required" placeholder="House number">
+                </p>
+
+                <h4>Payment options</h4>
+                <p>
+                    <label for="recipient"></label><be>
+                    <select id="recipient" name="rcp">
+                        <option>Credit card</option>
+                        <option>Paypal</option>
+                        <option>Klarna</option>
+                        <option>Swish</option>
+                    </select>
+                 </p>
+
+                 <p>
+                    <h4>Gender </h4>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <br>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <br>
+                    <input type="radio" id="non-binary" name="gender" value="non-binary">
+                    <label for="non-binary">Non-binary</label>
+                    <br>
+                    <input type="radio" id="no" name="gender" value="no">
+                    <label for="no">Do not wish to say</label>
+
+
+                 </p>
+            </section>
+            <button type="submit">
+                <img src="https://cdn-icons-png.flaticon.com/128/3500/3500833.png" style="width: 15px">
+                Place Order
+            </button>
+        </main>
+        <hr>
+        
+        <footer>
+            &copy 2022 Vigilante Burgers Inc.
+        </footer>
+    </body>
 </html>
+
