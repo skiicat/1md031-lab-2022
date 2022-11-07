@@ -2,49 +2,56 @@
 <html lang = "en">
     <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
         <header>
         <h1>Welcome to Viligante Burgers</h1>
         </header>
         <main>
-            <section>
+            <section id="burgers">
                 <h2>Select burger</h2>
-                Please pick your meal from our selection of burgers!
+                <p>Please pick your meal from our selection of burgers!</p>
                 <!--Burgers here-->
                 <br>
                 <div style="display: inline-block">
-                    <h3>The Anti-Hero Burger</h3>
+                    <h3 class="three-burgers">The Anti-Hero Burger</h3>
                     <img src="https://www.blacktulipbeauty.co.uk/wp-content/uploads/2019/04/IMG_0079.jpg" alt="Anti-Hero Burger" title="Anti-Hero Burger" style="height: 300px">
-                    <ul>
-                        <li>CHO: 56 g</li>
-                        <li>Contains gluten</li>
-                        <li>Contains lactose</li>
-                    </ul>
+                    <section class="contents">
+                        <ul>
+                            <li>CHO: 56 g</li>
+                            <li>Contains gluten</li>
+                            <li>Contains lactose</li>
+                        </ul>
+                    </section>
                 </div> 
                 
                 <div style="display: inline-block">
-                    <h3>The Karma Burger</h3>
+                    <h3 class="three-burgers">The Karma Burger</h3>
                     <img src="https://bauergarden.se/wp-content/uploads/2020/04/burgare-liten-e1585728062961.jpg" alt="Karma Burger" title="Karma Burger" style="height: 300px">
-                    <ul>
-                        <li>CHO: 45 g</li>
-                        <li>Contains gluten</li>
-                        <li>Contains lactose</li>
-                    </ul>
+                    <section class="contents">
+                        <ul>
+                            <li>CHO: 45 g</li>
+                            <li>Contains gluten</li>
+                            <li>Contains lactose</li>
+                        </ul>
+                    </section>
                 </div>
                 <div style="display: inline-block">
-                    <h3>The Midnight Burger</h3>
+                    <h3 class="three-burgers">The Midnight Burger</h3>
                     <img src="https://cdn.shopify.com/s/files/1/0563/7373/9669/articles/black-burger-bun-featured.jpg?v=1628758353" alt="Midnight Burger" title="Midnight Burger" style="height: 300px">
-                    <ul>
-                        <li>CHO: 28 g</li>
-                        <li>Free of gluten</li>
-                        <li>Vegan</li>
-                    </ul>
+                    <section class="contents">
+                        <ul class="contents">
+                            <li>CHO: 28 g</li>
+                            <li>Free of gluten</li>
+                            <li>Vegan</li>
+                        </ul>
+                    </section>
                 </div>
             </section>
-            <section>
+            <section id="order-info">
                 <h2>Customer information</h2>
-                Please enter essential information here for the delivery
+                <p>Please enter essential information here for the delivery</p>
                 <h3>Delivery information</h3>
                 <p> <!--name-->
                     <label for="name">Full name</label><br>
@@ -77,8 +84,8 @@
                     </select>
                  </p>
 
-                 <p>
-                    <h4>Gender </h4>
+                <h4>Gender </h4>
+                <p class="gender">
                     <input type="radio" id="female" name="gender" value="female">
                     <label for="female">Female</label>
                     <br>
@@ -90,9 +97,9 @@
                     <br>
                     <input type="radio" id="no" name="gender" value="no">
                     <label for="no">Do not wish to say</label>
+                    <br>
+                </p>
 
-
-                 </p>
             </section>
             <button type="submit">
                 <img src="https://cdn-icons-png.flaticon.com/128/3500/3500833.png" style="width: 15px">
