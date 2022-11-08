@@ -5,48 +5,45 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <header>
-        <h1>Welcome to Viligante Burgers</h1>
+        <header class="header">
+            <img id="image" src="https://media.istockphoto.com/id/543441106/photo/close-up-of-meat-patties-on-a-barbecue.jpg?s=612x612&w=0&k=20&c=gRInbV--3Xq6YBVxaWeBJAe3USOJS59gZjt7Qz7nk0s=">
+            <h1 id="headline">Welcome to Vigilante Burgers</h1>
+
         </header>
         <main>
             <section id="burgers">
                 <h2>Select burger</h2>
                 <p>Please pick your meal from our selection of burgers!</p>
                 <!--Burgers here-->
-                <br>
-                <div style="display: inline-block">
-                    <h3 class="three-burgers">The Anti-Hero Burger</h3>
-                    <img src="https://www.blacktulipbeauty.co.uk/wp-content/uploads/2019/04/IMG_0079.jpg" alt="Anti-Hero Burger" title="Anti-Hero Burger" style="height: 300px">
-                    <section class="contents">
-                        <ul>
-                            <li>CHO: 56 g</li>
-                            <li>Contains gluten</li>
-                            <li>Contains lactose</li>
-                        </ul>
-                    </section>
-                </div> 
+                <div class="wrapper">
+                    <div class="box-a">
+                        <h3 class="three-burgers">The Bejeweled Burger</h3>
+                        <img src="https://www.kitchensanctuary.com/wp-content/uploads/2015/03/Roast-Chicken-brioche-square-720.jpg" alt="Bejeweled Burger" title="Bejeweled Burger" style="height: 300px">
+                            <ul>
+                                <li>Chicken burger</li>
+                                <li id="gluten">Contains gluten</li>
+                                <li id="lactose">Contains lactose</li>
+                            </ul>
+                    </div> 
                 
-                <div style="display: inline-block">
-                    <h3 class="three-burgers">The Karma Burger</h3>
-                    <img src="https://bauergarden.se/wp-content/uploads/2020/04/burgare-liten-e1585728062961.jpg" alt="Karma Burger" title="Karma Burger" style="height: 300px">
-                    <section class="contents">
-                        <ul>
-                            <li>CHO: 45 g</li>
-                            <li>Contains gluten</li>
-                            <li>Contains lactose</li>
-                        </ul>
-                    </section>
-                </div>
-                <div style="display: inline-block">
-                    <h3 class="three-burgers">The Midnight Burger</h3>
-                    <img src="https://cdn.shopify.com/s/files/1/0563/7373/9669/articles/black-burger-bun-featured.jpg?v=1628758353" alt="Midnight Burger" title="Midnight Burger" style="height: 300px">
-                    <section class="contents">
-                        <ul class="contents">
-                            <li>CHO: 28 g</li>
-                            <li>Free of gluten</li>
-                            <li>Vegan</li>
-                        </ul>
-                    </section>
+                    <div class="box-b">
+                        <h3 class="three-burgers">The Karma Burger</h3>
+                        <img src="https://www.kitchensanctuary.com/wp-content/uploads/2015/11/Halloumi-Burger-with-Sticky-Chilli-Glaze-square-FS-50.jpg" alt="Karma Burger" title="Karma Burger" style="height: 300px">
+                            <ul>
+                                <li>Halloumi burger</li>
+                                <li id="gluten">Contains gluten</li>
+                                <li id="lactose">Contains lactose</li>
+                            </ul>
+                    </div>
+                    <div class="box-c">
+                        <h3 class="three-burgers">The Midnight Burger</h3>
+                        <img src="https://cdn.shopify.com/s/files/1/0563/7373/9669/articles/black-burger-bun-featured.jpg?v=1628758353" alt="Midnight Burger" title="Midnight Burger" style="height: 300px">
+                            <ul>
+                                <li>Bean burger</li>
+                                <li>Free of gluten</li>
+                                <li id="vegan">Vegan</li>
+                            </ul>
+                    </div>
                 </div>
             </section>
             <section id="order-info">
