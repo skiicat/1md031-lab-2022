@@ -132,9 +132,9 @@ const socket = io();
   this.vegan = vegan;
 }*/
 
-const burgerArray = [{name:"The Bejeweled Burger", URL:"pic", lactose:true, gluten:true, vegan:false}, 
-                    {name:"The Karma Burger", URL:"pic", lactose:true, gluten:true, vegan:false}, 
-                    {name:"The Midnight Burger", URL:"pic", lactose:false, gluten:false, vegan:true}
+const burgerArray = [{name:"The Bejeweled Burger", type:"Chicken burger", URL:"https://www.kitchensanctuary.com/wp-content/uploads/2015/03/Roast-Chicken-brioche-square-720.jpg", lactose:true, gluten:true, vegan:false,}, 
+                    {name:"The Karma Burger", type:"Halloumi burger", URL:"https://www.kitchensanctuary.com/wp-content/uploads/2015/11/Halloumi-Burger-with-Sticky-Chilli-Glaze-square-FS-50.jpg", lactose:true, gluten:true, vegan:false}, 
+                    {name:"The Midnight Burger", type:"Bean burger", URL:"https://cdn.shopify.com/s/files/1/0563/7373/9669/articles/black-burger-bun-featured.jpg?v=1628758353", lactose:false, gluten:false, vegan:true}
                     ];
 
 export default {
@@ -166,6 +166,122 @@ export default {
 </script>
 
 <style>
+  body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#burgers {
+   margin: 20px 10px;
+}
+
+#order-info{
+    background-color: black;
+    color:aliceblue;
+    margin: 20px 10px;
+}
+
+button:hover {
+    background-color:lightgreen;
+    cursor:pointer;
+ }
+
+ button {
+    margin: 10px 20px;
+ }
+
+ section {
+    margin: 20px 10px; /*top/bottom right/left*/
+    border: dotted; /*automatically becomes color of text*/
+ }
+
+ div {
+    padding: 5px;
+    margin: 10px;
+ }
+
+ header {
+    margin: 10px;
+ }
+
+ h2{
+    margin: 10px 20px;
+ }
+
+ h3{
+    margin: 10px 20px;
+ }
+
+ h4{
+    margin: 10px 20px;
+ }
+
+ p {
+    margin: 0px 20px;
+ }
+
+ .three-burgers {
+    /*margin: 0px 0px 10px 0px;*/
+    text-align: center;
+ }
+
+ .gender {
+    margin: 0px 0px 10px 10px; /*top right bottom left*/
+    
+ }
+ 
+ .header {
+   margin: 20px 10px;
+   height: 150px;
+   overflow: hidden;
+ }
+
+ #headline {
+   position: absolute;
+   margin-top: -525px;
+   margin-left: 30px;
+ }
+
+ #image {
+   opacity: 0.6;
+   width: 100%;
+   height: auto;
+ }
+
+ .wrapper {
+   display: grid;
+   grid-gap: 100px;
+   grid-template-columns: 325px 325px 325px;
+   background-color: #fff;
+   color: #444;
+ }
+
+ .box-a {
+   grid-column: 1;
+   grid-row: 1;
+}
+.box-b {
+   grid-column: 2 ;
+   grid-row: 1;
+}
+.box-c {
+   grid-column: 3;
+   grid-row: 1;
+}
+
+#gluten {
+   color: maroon;
+   font-weight:bold;
+}
+
+#lactose {
+   color:darkblue;
+   font-weight: bold;
+}
+
+#vegan {
+   color:forestgreen;
+}
+
   #map {
     width: 300px;
     height: 300px;
