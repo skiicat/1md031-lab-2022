@@ -10,9 +10,23 @@
             <section id="burgers">
                 <h2>Select burger</h2>
                 <p>Please pick your meal from our selection of burgers!</p>
+                
                 <!--Burgers here-->
+
+                <div>
+                 
+                  <!--<Burger v-for="burger in burgers" v-bind:burger="burger.name" v-on:selected="alert"></Burger>-->
+                  {{selectedBurger}}
+                  <Burger v-for="burger in burgers"
+                          v-bind:burger="burger" 
+                          v-on:selectedB="setSelectedBurger($event)"
+                          v-bind:key="burger.name"/>
+
+                </div>
+
+                
                 <div class="wrapper">
-                    <div class="box-a">
+                    <!---<div class="box-a">
                         <h3 class="three-burgers">The Bejeweled Burger</h3>
                         <img src="https://www.kitchensanctuary.com/wp-content/uploads/2015/03/Roast-Chicken-brioche-square-720.jpg" alt="Bejeweled Burger" title="Bejeweled Burger" style="height: 300px">
                             <ul>
@@ -39,7 +53,7 @@
                                 <li>Free of gluten</li>
                                 <li id="vegan">Vegan</li>
                             </ul>
-                    </div>
+                    </div>-->
                 </div>
             </section>
             <section id="order-info">
@@ -106,12 +120,7 @@
         </footer>
     </div>
 
-    <div>
-      Burgers
-      <Burger v-for="burger in burgers"
-              v-bind:burger="burger" 
-              v-bind:key="burger.name"/>
-    </div>
+    
     <div id="map" v-on:click="addOrder">
       click here
     </div>
@@ -124,7 +133,7 @@ import io from 'socket.io-client'
 
 const socket = io();
 
-/*const MenuItem = function(name:, URL, lactose, gluten, vegan) {
+/*function MenuItem(name:, URL, lactose, gluten, vegan) {
   this.name = name;
   this.imageLink = URL;
   this.lactose = lactose;
@@ -144,10 +153,15 @@ export default {
   },
   data: function () {
     return {
+      selectedBurger: [],
       burgers: burgerArray
     }
   },
   methods: {
+    setSelectedBurger:function(burger) {
+      this.selectedBurger.push(burger.name);
+
+    },
     getOrderNumber: function () {
       return Math.floor(Math.random()*100000);
     },
@@ -255,18 +269,18 @@ button:hover {
    color: #444;
  }
 
- .box-a {
+ /*.box-a {
    grid-column: 1;
    grid-row: 1;
 }
 .box-b {
-   grid-column: 2 ;
+   grid-column: 2;
    grid-row: 1;
 }
 .box-c {
    grid-column: 3;
    grid-row: 1;
-}
+}*/
 
 #gluten {
    color: maroon;
