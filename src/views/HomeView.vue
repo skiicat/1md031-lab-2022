@@ -12,11 +12,11 @@
                 <p>Please pick your meal from our selection of burgers!</p>
                 
                 <!--Burgers here-->
-
-                <div>
+                {{selectedBurger}}
+                <div class="wrapper">
                  
                   <!--<Burger v-for="burger in burgers" v-bind:burger="burger.name" v-on:selected="alert"></Burger>-->
-                  {{selectedBurger}}
+                  
                   <Burger v-for="burger in burgers"
                           v-bind:burger="burger" 
                           v-on:selectedB="setSelectedBurger($event)"
@@ -25,7 +25,7 @@
                 </div>
 
                 
-                <div class="wrapper">
+               
                     <!---<div class="box-a">
                         <h3 class="three-burgers">The Bejeweled Burger</h3>
                         <img src="https://www.kitchensanctuary.com/wp-content/uploads/2015/03/Roast-Chicken-brioche-square-720.jpg" alt="Bejeweled Burger" title="Bejeweled Burger" style="height: 300px">
@@ -54,7 +54,7 @@
                                 <li id="vegan">Vegan</li>
                             </ul>
                     </div>-->
-                </div>
+               
             </section>
             <section id="order-info">
                 <h2>Customer information</h2>
