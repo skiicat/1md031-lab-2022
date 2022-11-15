@@ -14,93 +14,60 @@
                 <!--Burgers here-->
                 {{selectedBurger}}
                 <div class="wrapper">
-                 
-                  <!--<Burger v-for="burger in burgers" v-bind:burger="burger.name" v-on:selected="alert"></Burger>-->
-                  
-                  <Burger v-for="burger in burgers"
-                          v-bind:burger="burger" 
-                          v-on:selectedB="setSelectedBurger($event)"
-                          v-bind:key="burger.name"/>
-
+                <Burger v-for="burger in burgers"
+                        v-bind:burger="burger" 
+                        v-on:selectedB="setSelectedBurger($event)"
+                        v-bind:key="burger.name"/>
                 </div>
 
-                
-               
-                    <!---<div class="box-a">
-                        <h3 class="three-burgers">The Bejeweled Burger</h3>
-                        <img src="https://www.kitchensanctuary.com/wp-content/uploads/2015/03/Roast-Chicken-brioche-square-720.jpg" alt="Bejeweled Burger" title="Bejeweled Burger" style="height: 300px">
-                            <ul>
-                                <li>Chicken burger</li>
-                                <li id="gluten">Contains gluten</li>
-                                <li id="lactose">Contains lactose</li>
-                            </ul>
-                    </div> 
-                
-                    <div class="box-b">
-                        <h3 class="three-burgers">The Karma Burger</h3>
-                        <img src="https://www.kitchensanctuary.com/wp-content/uploads/2015/11/Halloumi-Burger-with-Sticky-Chilli-Glaze-square-FS-50.jpg" alt="Karma Burger" title="Karma Burger" style="height: 300px">
-                            <ul>
-                                <li>Halloumi burger</li>
-                                <li id="gluten">Contains gluten</li>
-                                <li id="lactose">Contains lactose</li>
-                            </ul>
-                    </div>
-                    <div class="box-c">
-                        <h3 class="three-burgers">The Midnight Burger</h3>
-                        <img src="https://cdn.shopify.com/s/files/1/0563/7373/9669/articles/black-burger-bun-featured.jpg?v=1628758353" alt="Midnight Burger" title="Midnight Burger" style="height: 300px">
-                            <ul>
-                                <li>Bean burger</li>
-                                <li>Free of gluten</li>
-                                <li id="vegan">Vegan</li>
-                            </ul>
-                    </div>-->
-               
             </section>
+
             <section id="order-info">
                 <h2>Customer information</h2>
                 <p>Please enter essential information here for the delivery</p>
                 <h3>Delivery information</h3>
-                <p> <!--name-->
+                <!----><p> <!--name-->
                     <label for="name">Full name</label><br>
-                    <input type="text" id="name" name="fn" required="required" placeholder="First and last name">
+                    <input type="text" v-model="name" required="required" placeholder="First and last name" />
                 </p>
 
                 <p><!--e-mail-->
                     <label for="mail">E-mail</label><br>
-                    <input type="email" id="mail" name="fn" required="required" placeholder="E-mail address">
+                    <input type="email" v-model="mail" required="required" placeholder="E-mail address" />
                 </p>
 
                 <p><!--street-->
                     <label for="street">Street</label><br>
-                    <input type="text" id="street" name="fn" required="required" placeholder="Street name">
+                    <input type="text" v-model="street" required="required" placeholder="Street name" />
                 </p>
 
                 <p><!--house number-->
                     <label for="house">House</label><br>
-                    <input type="number" id="house" name="fn" required="required" placeholder="House number">
+                    <input type="number" v-model="house" required="required" placeholder="House number" />
                 </p>
-
+                  
                 <h4>Payment options</h4>
                 <p>
                     <label for="recipient"></label><br>
-                    <select id="recipient" name="rcp">
-                        <option>Credit card</option>
+                    <select id="recipient" v-model="rcp">
+                        <option >Credit card</option> <!--how to make it pre-selected??-->
                         <option>Paypal</option>
                         <option>Klarna</option>
                         <option>Swish</option>
                     </select>
-                 </p>
+                </p>
+
 
                 <h4>Gender </h4>
-                <p class="gender">
+                <p class="gender" > <!--when trying v-model instead of name, all buttons can be checked...-->
                     <input type="radio" id="female" name="gender" value="female">
                     <label for="female">Female</label>
                     <br>
                     <input type="radio" id="male" name="gender" value="male">
                     <label for="male">Male</label>
                     <br>
-                    <input type="radio" id="non-binary" name="gender" value="non-binary">
-                    <label for="non-binary">Non-binary</label>
+                    <input type="radio" id="nonBinary" name="gender" value="nonBinary">
+                    <label for="nonBinary">Non-binary</label>
                     <br>
                     <input type="radio" id="no" name="gender" value="no">
                     <label for="no">Do not wish to say</label>
@@ -130,6 +97,8 @@
 <script>
 import Burger from '../components/OneBurger.vue'
 import io from 'socket.io-client'
+import menu from '../assets/menu.json'
+
 
 const socket = io();
 
@@ -141,10 +110,12 @@ const socket = io();
   this.vegan = vegan;
 }*/
 
-const burgerArray = [{name:"The Bejeweled Burger", type:"Chicken burger", URL:"https://www.kitchensanctuary.com/wp-content/uploads/2015/03/Roast-Chicken-brioche-square-720.jpg", lactose:true, gluten:true, vegan:false,}, 
+/*const burgerArray = [{name:"The Bejeweled Burger", type:"Chicken burger", URL:"https://www.kitchensanctuary.com/wp-content/uploads/2015/03/Roast-Chicken-brioche-square-720.jpg", lactose:true, gluten:true, vegan:false}, 
                     {name:"The Karma Burger", type:"Halloumi burger", URL:"https://www.kitchensanctuary.com/wp-content/uploads/2015/11/Halloumi-Burger-with-Sticky-Chilli-Glaze-square-FS-50.jpg", lactose:true, gluten:true, vegan:false}, 
                     {name:"The Midnight Burger", type:"Bean burger", URL:"https://cdn.shopify.com/s/files/1/0563/7373/9669/articles/black-burger-bun-featured.jpg?v=1628758353", lactose:false, gluten:false, vegan:true}
-                    ];
+                    ];*/
+  
+//const MenuItem = menu
 
 export default {
   name: 'HomeView',
@@ -154,7 +125,9 @@ export default {
   data: function () {
     return {
       selectedBurger: [],
-      burgers: burgerArray
+      burgers: menu 
+      
+
     }
   },
   methods: {

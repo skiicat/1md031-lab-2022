@@ -1,0 +1,29 @@
+[
+    {
+      "name": "The Bejeweled Burger",
+      "type":"Chicken burger",
+      "URL": "https://www.kitchensanctuary.com/wp-content/uploads/2015/03/Roast-Chicken-brioche-square-720.jpg",
+      "lactose": true,
+      "gluten": true,
+      "vegan": false
+    },
+
+    {
+        "name": "The Karma Burger",
+        "URL": "https://www.kitchensanctuary.com/wp-content/uploads/2015/11/Halloumi-Burger-with-Sticky-Chilli-Glaze-square-FS-50.jpg",
+        "type": "Halloumi burger",
+        "lactose": true,
+        "gluten": true,
+        "vegan": false
+      },
+
+      {
+        "name": "The Midnight Burger",
+        "URL": "https://cdn.shopify.com/s/files/1/0563/7373/9669/articles/black-burger-bun-featured.jpg?v=1628758353",
+        "type": "Bean burger",
+        "lactose": false,
+        "gluten": false,
+        "vegan": true
+      }
+
+  ]
