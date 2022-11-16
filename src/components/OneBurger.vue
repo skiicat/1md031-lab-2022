@@ -1,5 +1,6 @@
 <template>
     <div>
+      
         <h3>{{ burger.name }}</h3>
         <img v-bind:src="burger.URL" style="height: 300px"> <!--alt="Bejeweled Burger" title="burger.name"-->
           <ul>
@@ -8,8 +9,11 @@
             <li id="lactose" v-if="burger.lactose">Contains lactose</li>
             <li id="vegan" v-if="burger.vegan">Vegan</li>
 
-            <button v-on:click="selectThisBurger">Select</button>
+            <button v-on:click="amountOrdered--">-</button>{{ amountOrdered }}
+            <button v-on:click="amountOrdered++">+</button>
+
           </ul>
+
     </div>
   </template>
   
@@ -19,10 +23,19 @@
     props: {
       burger: Object
     },
+
+    data: function () {
+  return {
+    amountOrdered: 0,
+
+  }
+},
     methods: {
-      selectThisBurger:function() {
-        this.$emit("selectedB", this.burger)
-      }
+      addBurger:function() {
+        this.$emit("orderedBurger", { name:   this.burger.name, 
+                                      amount: this.amountOrdered 
+                              });
+      },
     }
   }
   </script>

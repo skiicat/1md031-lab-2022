@@ -1,96 +1,97 @@
 <template>
   <div>
-    <div>
-        <header class="header">
-            <img id="image" src="https://media.istockphoto.com/id/543441106/photo/close-up-of-meat-patties-on-a-barbecue.jpg?s=612x612&w=0&k=20&c=gRInbV--3Xq6YBVxaWeBJAe3USOJS59gZjt7Qz7nk0s=">
-            <h1 id="headline">Welcome to Vigilante Burgers</h1>
+    <header class="header">
+      <img id="image" src="https://media.istockphoto.com/id/543441106/photo/close-up-of-meat-patties-on-a-barbecue.jpg?s=612x612&w=0&k=20&c=gRInbV--3Xq6YBVxaWeBJAe3USOJS59gZjt7Qz7nk0s=">
+      <h1 id="headline">Welcome to Vigilante Burgers</h1>
+    </header>
+    <main>
 
-        </header>
-        <main>
-            <section id="burgers">
-                <h2>Select burger</h2>
-                <p>Please pick your meal from our selection of burgers!</p>
-                
-                <!--Burgers here-->
-                {{selectedBurger}}
-                <div class="wrapper">
-                <Burger v-for="burger in burgers"
-                        v-bind:burger="burger" 
-                        v-on:selectedB="setSelectedBurger($event)"
-                        v-bind:key="burger.name"/>
-                </div>
+      <section id="burgers">
+        <h2>Select burger</h2>
+        <p>Please pick your meal from our selection of burgers!</p>
+          <div class="wrapper">
+              <Burger v-for="burger in burgers"
+                      v-bind:burger="burger" 
+                      v-on:orderedBurger="addToOrder($event)"
+                      v-bind:key="burger.name"/>
+          </div>
 
-            </section>
+      </section>
 
-            <section id="order-info">
-                <h2>Customer information</h2>
-                <p>Please enter essential information here for the delivery</p>
-                <h3>Delivery information</h3>
-                <!----><p> <!--name-->
-                    <label for="name">Full name</label><br>
-                    <input type="text" v-model="name" required="required" placeholder="First and last name" />
-                </p>
+      <section id="order-info">
+        <h2>Customer information</h2>
+        <p>Please enter essential information here for the delivery</p>
+        <h3>Delivery information</h3>
+                  <!----><p> <!--name-->
+                      <label for="name">Full name</label><br>
+                      <input type="text" v-model="name" required="required" placeholder="First and last name" />
+                  </p>
 
-                <p><!--e-mail-->
-                    <label for="mail">E-mail</label><br>
-                    <input type="email" v-model="mail" required="required" placeholder="E-mail address" />
-                </p>
+                  <p><!--e-mail-->
+                      <label for="mail">E-mail</label><br>
+                      <input type="email" v-model="mail" required="required" placeholder="E-mail address" />
+                  </p>
 
-                <p><!--street-->
-                    <label for="street">Street</label><br>
-                    <input type="text" v-model="street" required="required" placeholder="Street name" />
-                </p>
+                  <p><!--street-->
+                      <label for="street">Street</label><br>
+                      <input type="text" v-model="street" required="required" placeholder="Street name" />
+                  </p>
 
-                <p><!--house number-->
-                    <label for="house">House</label><br>
-                    <input type="number" v-model="house" required="required" placeholder="House number" />
-                </p>
-                  
-                <h4>Payment options</h4>
-                <p>
-                    <label for="recipient"></label><br>
-                    <select id="recipient" v-model="rcp">
-                        <option >Credit card</option> <!--how to make it pre-selected??-->
-                        <option>Paypal</option>
-                        <option>Klarna</option>
-                        <option>Swish</option>
-                    </select>
-                </p>
+                  <p><!--house number-->
+                      <label for="house">House</label><br>
+                      <input type="number" v-model="house" required="required" placeholder="House number" />
+                  </p>
+                    
+        <h4>Payment options</h4>
+            <p>
+                <label for="recipient"></label><br>
+                <select id="recipient" v-model="rcp">
+                    <option >Credit card</option>
+                    <option>Paypal</option>
+                    <option>Klarna</option>
+                    <option>Swish</option>
+                </select>
+            </p>
 
+          <h4>Gender </h4>
+          <p class="gender" >
+                <input type="radio" id="female" v-model="gender" value="female">
+                <label for="female">Female</label>
+                <br>
+                <input type="radio" id="male" v-model="gender" value="male">
+                <label for="male">Male</label>
+                <br>
+                <input type="radio" id="nonBinary" v-model="gender" value="nonBinary">
+                <label for="nonBinary">Non-binary</label>
+                <br>
+                <input type="radio" id="no" v-model="gender" value="no">
+                <label for="no">Do not wish to say</label>
+                <br>
+          </p>
 
-                <h4>Gender </h4>
-                <p class="gender" > <!--when trying v-model instead of name, all buttons can be checked...-->
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">Female</label>
-                    <br>
-                    <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">Male</label>
-                    <br>
-                    <input type="radio" id="nonBinary" name="gender" value="nonBinary">
-                    <label for="nonBinary">Non-binary</label>
-                    <br>
-                    <input type="radio" id="no" name="gender" value="no">
-                    <label for="no">Do not wish to say</label>
-                    <br>
-                </p>
+        <div id="map" v-on:click="addOrder">
+          click here
+          <div id="dots">
+            <!--<div v-bind:style="{ left: location.x + 'px', top: location.y + 'px'}" >
+          T
+            </div>-->
+          </div>
+        </div>
+ 
 
-            </section>
-            <button type="submit">
-                <img src="https://cdn-icons-png.flaticon.com/128/3500/3500833.png" style="width: 15px">
-                Place Order
-            </button>
-        </main>
-        <hr>
-        
-        <footer>
-            &copy 2022 Vigilante Burgers Inc.
-        </footer>
-    </div>
-
-    
-    <div id="map" v-on:click="addOrder">
-      click here
-    </div>
+      </section>
+    </main>
+      <button type="submit" v-on:click="sendOrder">
+          <img src="https://cdn-icons-png.flaticon.com/128/3500/3500833.png" style="width: 15px">
+            Place Order
+      </button>
+      <hr>
+          
+      <footer>
+        &copy; 2022 Vigilante Burgers Inc.
+      </footer>
+      
+     
   </div>
 </template>
 
@@ -115,7 +116,6 @@ const socket = io();
                     {name:"The Midnight Burger", type:"Bean burger", URL:"https://cdn.shopify.com/s/files/1/0563/7373/9669/articles/black-burger-bun-featured.jpg?v=1628758353", lactose:false, gluten:false, vegan:true}
                     ];*/
   
-//const MenuItem = menu
 
 export default {
   name: 'HomeView',
@@ -125,15 +125,28 @@ export default {
   data: function () {
     return {
       selectedBurger: [],
-      burgers: menu 
-      
+      burgers: menu,
+      name:"",
+      mail:"",
+      street:"",
+      house:"",
+      gender:"female",
+      rcp:"recipient",
+      orderedBurgers: {},
+      location: { x: 0,
+                y: 0
+              }
 
     }
   },
   methods: {
-    setSelectedBurger:function(burger) {
-      this.selectedBurger.push(burger.name);
-
+    sendOrder: function() {
+      console.log(this.name, this.mail, this.street, this.house, this.rcp, this.gender, this.orderedBurgers)
+    //Add some functionality
+  },
+    addToOrder:function(event) {
+      this.orderedBurgers[event.name] = event.amount;
+      
     },
     getOrderNumber: function () {
       return Math.floor(Math.random()*100000);
@@ -149,7 +162,8 @@ export default {
                  );
     }
   }
-}
+  
+  }
 </script>
 
 <style>
@@ -165,6 +179,7 @@ export default {
     background-color: black;
     color:aliceblue;
     margin: 20px 10px;
+    overflow-y:scroll;
 }
 
 button:hover {
@@ -242,19 +257,6 @@ button:hover {
    color: #444;
  }
 
- /*.box-a {
-   grid-column: 1;
-   grid-row: 1;
-}
-.box-b {
-   grid-column: 2;
-   grid-row: 1;
-}
-.box-c {
-   grid-column: 3;
-   grid-row: 1;
-}*/
-
 #gluten {
    color: maroon;
    font-weight:bold;
@@ -269,9 +271,11 @@ button:hover {
    color:forestgreen;
 }
 
-  #map {
-    width: 300px;
-    height: 300px;
-    background-color: red;
-  }
+#map {
+    width: 1920px;
+    height: 1078px;
+    background: url("../../public/img/polacks.jpg");
+    color: black;
+}
+
 </style>
