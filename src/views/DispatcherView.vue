@@ -1,8 +1,15 @@
 <template>
     <div id="orders">
       <div id="orderList">
+        {{orders}}
         <div v-for="(order, key) in orders" v-bind:key="'order'+key">
           #{{ key }}: {{ order.orderItems.join(", ") }}
+          <!--
+            <br>
+            <i>{{order.details.join(",")}}</i> kan göras snyggare, efterlikna hans bild i exemplet
+
+          -->
+
         </div>
         <button v-on:click="clearQueue">Clear Queue</button>
       </div>

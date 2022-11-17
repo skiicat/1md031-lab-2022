@@ -22,7 +22,7 @@
         <h2>Customer information</h2>
         <p>Please enter essential information here for the delivery</p>
         <h3>Delivery information</h3>
-                  <!----><p> <!--name-->
+                  <p> <!--name-->
                       <label for="name">Full name</label><br>
                       <input type="text" v-model="name" required="required" placeholder="First and last name" />
                   </p>
@@ -31,16 +31,16 @@
                       <label for="mail">E-mail</label><br>
                       <input type="email" v-model="mail" required="required" placeholder="E-mail address" />
                   </p>
-
-                  <p><!--street-->
+<!--
+                  <p>
                       <label for="street">Street</label><br>
                       <input type="text" v-model="street" required="required" placeholder="Street name" />
                   </p>
 
-                  <p><!--house number-->
+                  <p>
                       <label for="house">House</label><br>
                       <input type="number" v-model="house" required="required" placeholder="House number" />
-                  </p>
+                  </p>-->
                     
         <h4>Payment options</h4>
             <p>
@@ -68,13 +68,11 @@
                 <label for="no">Do not wish to say</label>
                 <br>
           </p>
-
-        <div id="map" v-on:click="addOrder">
-          click here
-          <div id="dots">
-            <!--<div v-bind:style="{ left: location.x + 'px', top: location.y + 'px'}" >
-          T
-            </div>-->
+        <h3>Please indicate point of delivery</h3>
+        <div id="map">
+      
+          <div id="dots" v-on:click="setLocation">
+            <div v-bind:style="{ left: location.x + 'px', top: location.y + 'px'}" >T</div>
           </div>
         </div>
  
@@ -128,8 +126,8 @@ export default {
       burgers: menu,
       name:"",
       mail:"",
-      street:"",
-      house:"",
+      /*street:"",
+      house:"",*/
       gender:"female",
       rcp:"recipient",
       orderedBurgers: {},
@@ -140,9 +138,21 @@ export default {
     }
   },
   methods: {
+    setLocation: function(event) {
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+                    y: event.currentTarget.getBoundingClientRect().top};
+      this.location = { x: event.clientX - 10 - offset.x,
+                        y: event.clientY - 10 - offset.y }
+      
+    },
     sendOrder: function() {
-      console.log(this.name, this.mail, this.street, this.house, this.rcp, this.gender, this.orderedBurgers)
-    //Add some functionality
+      console.log(this.name, this.mail, this.rcp, this.gender, this.orderedBurgers)
+
+      socket.emit("addOrder", { orderId: this.getOrderNumber(),
+                                details: [this.location, this.name, this.mail, this.gender, this.rcp],
+                                orderItems: this.orderedBurgers
+                              }
+                 );
   },
     addToOrder:function(event) {
       this.orderedBurgers[event.name] = event.amount;
@@ -154,6 +164,9 @@ export default {
     addOrder: function (event) {
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
+      this.location = { x: event.clientX - 10 - offset.x,
+                        y: event.clientY - 10 - offset.y }
+                
       socket.emit("addOrder", { orderId: this.getOrderNumber(),
                                 details: { x: event.clientX - 10 - offset.x,
                                            y: event.clientY - 10 - offset.y },
@@ -179,7 +192,7 @@ export default {
     background-color: black;
     color:aliceblue;
     margin: 20px 10px;
-    overflow-y:scroll;
+    overflow:scroll;
 }
 
 button:hover {
@@ -196,10 +209,10 @@ button:hover {
     border: dotted; /*automatically becomes color of text*/
  }
 
- div {
+ /*div {
     padding: 5px;
     margin: 10px;
- }
+ }*/
 
  header {
     margin: 10px;
@@ -272,10 +285,38 @@ button:hover {
 }
 
 #map {
-    width: 1920px;
-    height: 1078px;
-    background: url("../../public/img/polacks.jpg");
+    width: 1400px;
+    height: 500px;
+    overflow:scroll;
+    
     color: black;
 }
+
+/*#dots {
+  position:absolute;
+  margin: 0px;
+  padding: 0px;
+}*/
+
+#dots {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background: url("../../public/img/polacks.jpg");
+    width:1920px;
+    height: 1078px;
+    cursor: crosshair;
+  }
+  
+  #dots div {
+    position: absolute;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    width:20px;
+    height:20px;
+    text-align: center;
+  }
 
 </style>
