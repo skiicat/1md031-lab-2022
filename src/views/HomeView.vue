@@ -15,32 +15,21 @@
                       v-on:orderedBurger="addToOrder($event)"
                       v-bind:key="burger.name"/>
           </div>
-
       </section>
 
       <section id="order-info">
         <h2>Customer information</h2>
         <p>Please enter essential information here for the delivery</p>
         <h3>Delivery information</h3>
-                  <p> <!--name-->
+                  <p> 
                       <label for="name">Full name</label><br>
                       <input type="text" v-model="name" required="required" placeholder="First and last name" />
                   </p>
 
-                  <p><!--e-mail-->
+                  <p>
                       <label for="mail">E-mail</label><br>
                       <input type="email" v-model="mail" required="required" placeholder="E-mail address" />
                   </p>
-<!--
-                  <p>
-                      <label for="street">Street</label><br>
-                      <input type="text" v-model="street" required="required" placeholder="Street name" />
-                  </p>
-
-                  <p>
-                      <label for="house">House</label><br>
-                      <input type="number" v-model="house" required="required" placeholder="House number" />
-                  </p>-->
                     
         <h4>Payment options</h4>
             <p>
@@ -53,6 +42,7 @@
                 </select>
             </p>
 
+
           <h4>Gender </h4>
           <p class="gender" >
                 <input type="radio" id="female" v-model="gender" value="female">
@@ -61,24 +51,24 @@
                 <input type="radio" id="male" v-model="gender" value="male">
                 <label for="male">Male</label>
                 <br>
-                <input type="radio" id="nonBinary" v-model="gender" value="nonBinary">
-                <label for="nonBinary">Non-binary</label>
+                <input type="radio" id="nonBinary" v-model="gender" value="non-binary">
+                <label for="non-binary">Non-binary</label>
                 <br>
-                <input type="radio" id="no" v-model="gender" value="no">
-                <label for="no">Do not wish to say</label>
+                <input type="radio" id="no" v-model="gender" value="undisclosed">
+                <label for="undisclosed">Do not wish to say</label>
                 <br>
           </p>
-        <h3>Please indicate point of delivery</h3>
+
+        <h4>Please indicate point of delivery</h4>
         <div id="map">
-      
           <div id="dots" v-on:click="setLocation">
             <div v-bind:style="{ left: location.x + 'px', top: location.y + 'px'}" >T</div>
           </div>
         </div>
  
-
       </section>
     </main>
+
       <button type="submit" v-on:click="sendOrder(key)">
           <img src="https://cdn-icons-png.flaticon.com/128/3500/3500833.png" style="width: 15px">
             Place Order
@@ -88,8 +78,7 @@
       <footer>
         &copy; 2022 Vigilante Burgers Inc.
       </footer>
-      
-     
+        
   </div>
 </template>
 
@@ -126,14 +115,12 @@ export default {
       burgers: menu,
       name:"",
       mail:"",
-      /*street:"",
-      house:"",*/
       gender:"female",
       rcp:"recipient",
       orderedBurgers: {},
       location: { x: 0,
-                y: 0
-              }
+                  y: 0
+                }
 
     }
   },
@@ -146,7 +133,7 @@ export default {
       
     },
     sendOrder: function() {
-      console.log(this.name, this.mail, this.rcp, this.gender, this.orderedBurgers)
+      //console.log(this.name, this.mail, this.rcp, this.gender, this.orderedBurgers)
 
       socket.emit("addOrder", { orderId: this.getOrderNumber(),
                                 details: this.location,
@@ -162,6 +149,7 @@ export default {
     getOrderNumber: function () {
       return Math.floor(Math.random()*100000);
     },
+
     addOrder: function () {
       /*var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
@@ -182,7 +170,7 @@ export default {
 
 <style>
   body {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Gill Sans', sans-serif;
 }
 
 #burgers {
@@ -206,28 +194,23 @@ button:hover {
  }
 
  section {
-    margin: 20px 10px; /*top/bottom right/left*/
-    border: dotted; /*automatically becomes color of text*/
+    margin: 20px 10px;
+    border: dotted; 
  }
-
- /*div {
-    padding: 5px;
-    margin: 10px;
- }*/
 
  header {
     margin: 10px;
  }
 
- h2{
+ h2 {
     margin: 10px 20px;
  }
 
- h3{
+ h3 {
     margin: 10px 20px;
  }
 
- h4{
+ h4 {
     margin: 10px 20px;
  }
 
@@ -235,14 +218,8 @@ button:hover {
     margin: 0px 20px;
  }
 
- .three-burgers {
-    /*margin: 0px 0px 10px 0px;*/
-    text-align: center;
- }
-
  .gender {
-    margin: 0px 0px 10px 10px; /*top right bottom left*/
-    
+    margin: 0px 0px 10px 10px; /*top right bottom left*/ 
  }
  
  .header {
@@ -271,20 +248,6 @@ button:hover {
    color: #444;
  }
 
-#gluten {
-   color: maroon;
-   font-weight:bold;
-}
-
-#lactose {
-   color:darkblue;
-   font-weight: bold;
-}
-
-#vegan {
-   color:forestgreen;
-}
-
 #map {
     width: 1400px;
     height: 500px;
@@ -292,12 +255,6 @@ button:hover {
     
     color: black;
 }
-
-/*#dots {
-  position:absolute;
-  margin: 0px;
-  padding: 0px;
-}*/
 
 #dots {
     position: relative;

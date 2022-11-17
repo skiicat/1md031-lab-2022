@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="burgerDiv">
       
         <h3>{{ burger.name }}</h3>
         <img v-bind:src="burger.URL" style="height: 300px"> <!--alt="Bejeweled Burger" title="burger.name"-->
@@ -9,9 +9,9 @@
             <li id="lactose" v-if="burger.lactose">Contains lactose</li>
             <li id="vegan" v-if="burger.vegan">Vegan</li>
 
-            <button v-on:click="amountOrdered--">-</button>{{ amountOrdered }}
+            <button v-on:click="amountOrdered--">-</button>
+            {{ amountOrdered }}
             <button v-on:click="amountOrdered++">+</button>
-
           </ul>
 
     </div>
@@ -42,8 +42,8 @@
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
-  
-  div {
+
+ .burgerDiv {
     padding: 5px;
     margin: 10px;
  }

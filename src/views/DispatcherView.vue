@@ -1,27 +1,13 @@
 <template>
     <div id="orders">
       <div id="orderList">
+
         <div v-for="(order, key) in orders" v-bind:key="'order'+key">
-          <span>#{{key}}:{{order.orderItems}}</span>
+          <span>#{{key}}: {{order.orderItems}}</span>
           <br>
-          <span>Name: {{order.info.name}}</span>
-          <br>
-          <span>Email: {{order.info.mail}}</span>
-          <br>
-          <span>Gender: {{order.info.gender}}</span>
-          <br>
-          <span>Payment: {{order.info.payment}}</span>
-          
-          <!--#{{ key }}: {{ order.orderItems.join(", ") }}
-            <span>{{order.info.name}}, </span>
-            {{order.info.mail}}, {{order.info.gender}}, {{order.info.rcp}}
-          
-            <br>
-            <i>{{order.details.join(",")}}</i> kan göras snyggare, efterlikna hans bild i exemplet
-
-          -->
-
+          <span><i>{{order.info.name}} ({{order.info.mail}}, {{order.info.gender}}), Payment: {{order.info.payment}}</i></span>
         </div>
+
         <button v-on:click="clearQueue">Clear Queue</button>
       </div>
       <div id="dots" v-bind:style="{ background: 'url(' + require('../../public/img/polacks.jpg')+ ')' }">
@@ -31,6 +17,7 @@
       </div>
     </div>
   </template>
+  
   <script>
   import io from 'socket.io-client'
   const socket = io();
