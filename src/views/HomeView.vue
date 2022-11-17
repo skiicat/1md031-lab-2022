@@ -79,7 +79,7 @@
 
       </section>
     </main>
-      <button type="submit" v-on:click="sendOrder">
+      <button type="submit" v-on:click="sendOrder(key)">
           <img src="https://cdn-icons-png.flaticon.com/128/3500/3500833.png" style="width: 15px">
             Place Order
       </button>
@@ -149,8 +149,9 @@ export default {
       console.log(this.name, this.mail, this.rcp, this.gender, this.orderedBurgers)
 
       socket.emit("addOrder", { orderId: this.getOrderNumber(),
-                                details: [this.location, this.name, this.mail, this.gender, this.rcp],
-                                orderItems: this.orderedBurgers
+                                details: this.location,
+                                orderItems: this.orderedBurgers,
+                                info: {name: this.name, mail: this.mail, gender: this.gender, payment: this.rcp}
                               }
                  );
   },
@@ -161,8 +162,8 @@ export default {
     getOrderNumber: function () {
       return Math.floor(Math.random()*100000);
     },
-    addOrder: function (event) {
-      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+    addOrder: function () {
+      /*var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
       this.location = { x: event.clientX - 10 - offset.x,
                         y: event.clientY - 10 - offset.y }
@@ -172,7 +173,7 @@ export default {
                                            y: event.clientY - 10 - offset.y },
                                 orderItems: ["Beans", "Curry"]
                               }
-                 );
+                 );*/
     }
   }
   
