@@ -9,7 +9,7 @@
             <li id="lactose" v-if="burger.lactose">Contains lactose</li>
             <li id="vegan" v-if="burger.vegan">Vegan</li>
 
-            <button v-on:click="deleteBurger">-</button>
+            <button id="decreaseB" v-on:click="deleteBurger">-</button>
             {{ amountOrdered }}
             <button v-on:click="addBurger">+</button>
           </ul>
@@ -74,5 +74,13 @@
    color:forestgreen;
    font-weight: bold;
 }
+
+#decreaseB:hover {
+  background-color:lightsalmon;
+  cursor:pointer;
+
+}
+
+
   </style>
   

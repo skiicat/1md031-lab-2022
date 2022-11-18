@@ -2,7 +2,7 @@
   <div>
     <header class="header">
       <img id="image" src="https://media.istockphoto.com/id/543441106/photo/close-up-of-meat-patties-on-a-barbecue.jpg?s=612x612&w=0&k=20&c=gRInbV--3Xq6YBVxaWeBJAe3USOJS59gZjt7Qz7nk0s=">
-      <h1 id="headline">Welcome to Vigilante Burgers</h1>
+      <h1 id="headline">Welcome to Vigilante Burgers!</h1>
     </header>
     <main>
 
@@ -175,6 +175,7 @@ export default {
 
 #burgers {
    margin: 20px 10px;
+   color: #444;
 }
 
 #order-info{
@@ -232,6 +233,7 @@ button:hover {
    position: absolute;
    margin-top: -525px;
    margin-left: 30px;
+   /*font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
  }
 
  #image {
@@ -245,7 +247,6 @@ button:hover {
    grid-gap: 100px;
    grid-template-columns: 325px 325px 325px;
    background-color: #fff;
-   color: #444;
  }
 
 #map {
