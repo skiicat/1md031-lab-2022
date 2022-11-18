@@ -116,7 +116,7 @@ export default {
       name:"",
       mail:"",
       gender:"female",
-      rcp:"recipient",
+      rcp:"credit card",
       orderedBurgers: {},
       location: { x: 0,
                   y: 0

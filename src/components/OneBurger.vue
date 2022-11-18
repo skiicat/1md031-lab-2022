@@ -9,9 +9,9 @@
             <li id="lactose" v-if="burger.lactose">Contains lactose</li>
             <li id="vegan" v-if="burger.vegan">Vegan</li>
 
-            <button v-on:click="amountOrdered--">-</button>
+            <button v-on:click="deleteBurger">-</button>
             {{ amountOrdered }}
-            <button v-on:click="amountOrdered++">+</button>
+            <button v-on:click="addBurger">+</button>
           </ul>
 
     </div>
@@ -32,9 +32,17 @@
 },
     methods: {
       addBurger:function() {
+        this.amountOrdered++;
         this.$emit("orderedBurger", { name:   this.burger.name, 
                                       amount: this.amountOrdered 
                               });
+      },
+      deleteBurger:function() {
+        if (this.amountOrdered > 0) {
+        this.amountOrdered--;
+        this.$emit("orderedBurger", { name:   this.burger.name, 
+                                      amount: this.amountOrdered 
+                              });}
       },
     }
   }
