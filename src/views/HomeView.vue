@@ -182,7 +182,7 @@ export default {
     background-color: black;
     color:aliceblue;
     margin: 20px 10px;
-    overflow:scroll;
+    overflow: scroll;
 }
 
 button:hover {
@@ -220,7 +220,7 @@ button:hover {
  }
 
  .gender {
-    margin: 0px 0px 10px 10px; /*top right bottom left*/ 
+    margin: 0px 0px 10px 10px; 
  }
  
  .header {
@@ -233,7 +233,6 @@ button:hover {
    position: absolute;
    margin-top: -525px;
    margin-left: 30px;
-   /*font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
  }
 
  #image {
